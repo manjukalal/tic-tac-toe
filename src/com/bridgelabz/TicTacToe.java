@@ -2,7 +2,7 @@ package com.bridgelabz;
 
 import java.util.Scanner;
 
-public class TicTocTac {
+public class TicTacToe {
     public static char[] gameBoard = new char[10];
     public static Scanner scanner = new Scanner(System.in);
     public static char userTurn;
