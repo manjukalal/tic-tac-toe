@@ -1,4 +1,5 @@
 package com.bridgelabz;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,21 +14,6 @@ public class TicTacToe {
     public static int turnCount;
     public static Scanner scanner = new Scanner(System.in);
 
-    public static void declareArray() {
-        // TODO Auto-generated method stub
-        System.out.println("Welcome to Tic-Tac-Toe game");
-        for (int i = 0; i < gameBoard.length; i++) {
-
-            gameBoard[i] = ' ';
-        }
-
-    }
-
-    public static char user(Scanner scanner) {
-        System.out.println("Enter your choice  X or O only");
-        return scanner.next().toUpperCase().charAt(0);
-    }
-
     public static void showBoard() {
 
         System.out.println(gameBoard[0] + " | " + gameBoard[1] + " | " + gameBoard[2]);
@@ -35,12 +21,24 @@ public class TicTacToe {
         System.out.println(gameBoard[6] + " | " + gameBoard[7] + " | " + gameBoard[8]);
     }
 
+    public static char user(Scanner scanner) {
+        System.out.println("Enter your choice  X or O only");
+        return TicTacToe.scanner.next().toUpperCase().charAt(0);
+    }
+
+    public static void ticTacToe() {
+        for (int i = 0; i < gameBoard.length; i++) {
+
+            gameBoard[i] = ' ';
+        }
+    }
+
     public static void computerLocation() {
         boolean flag = false;
         System.out.println("Player choose [0-8]");
         while (true) {
-            Random rand = new Random();
-            computerPosition = rand.nextInt(9);
+            Random random = new Random();
+            computerPosition = random.nextInt(9);
             switch (computerPosition) {
                 case 0:
                     if (gameBoard[0] == ' ') {
@@ -113,6 +111,7 @@ public class TicTacToe {
         }
     }
 
+
     public static void blockUser() {
         if (gameBoard[0] == userTurn && gameBoard[1] == userTurn) {
             gameBoard[2] = computerTurn;
@@ -149,23 +148,195 @@ public class TicTacToe {
         } else if (gameBoard[8] == userTurn && gameBoard[5] == userTurn) {
             gameBoard[2] = computerTurn;
 
-        } else
-            computerLocation();
+        } else computerLocation();
+    }
+
+    public static void winner(char symbol) {
+
+        if (gameBoard[0] != ' ' && gameBoard[0] == gameBoard[1] && gameBoard[1] == gameBoard[2]) {
+            if (gameBoard[0] == symbol) {
+                System.out.println("\n\ncomputer WINS THE GAME\n");
+            } else {
+                System.out.println("\n\nplayer WINS THE GAME\n");
+            }
+            exitCode = '1';
+
+        } else if (gameBoard[3] != ' ' && gameBoard[3] == gameBoard[4] && gameBoard[4] == gameBoard[5]) {
+            if (gameBoard[3] == symbol) {
+                System.out.println("\n\ncomputer  WINS THE GAME\n");
+            } else {
+                System.out.println("\n\nplayer  WINS THE GAME\n");
+            }
+            exitCode = '1';
+        } else if (gameBoard[7] != ' ' && gameBoard[6] == gameBoard[7] && gameBoard[7] == gameBoard[8]) {
+            if (gameBoard[7] == symbol) {
+                System.out.println("\n\ncomputer WINS THE GAME\n");
+            } else {
+                System.out.println("\n\nplayer WINS THE GAME\n");
+            }
+            exitCode = '1';
+        } else if (gameBoard[6] != ' ' && gameBoard[0] == gameBoard[3] && gameBoard[3] == gameBoard[6]) {
+            if (gameBoard[6] == symbol) {
+                System.out.println("\n\ncomputer  WINS THE GAME\n");
+            } else {
+                System.out.println("\n\nplayer WINS THE GAME\n");
+            }
+            exitCode = '1';
+        } else if (gameBoard[1] != ' ' && gameBoard[1] == gameBoard[4] && gameBoard[4] == gameBoard[7]) {
+            if (gameBoard[1] == symbol) {
+                System.out.println("\n\ncomputer WINS THE GAME\n");
+            } else {
+                System.out.println("\n\nplayer WINS THE GAME\n");
+            }
+            exitCode = '1';
+        } else if (gameBoard[5] != ' ' && gameBoard[2] == gameBoard[5] && gameBoard[5] == gameBoard[8]) {
+            if (gameBoard[5] == symbol) {
+                System.out.println("\n\ncomputer  WINS THE GAME\n");
+            } else {
+                System.out.println("\n\nplayer  WINS THE GAME\n");
+            }
+            exitCode = '1';
+        } else if (gameBoard[4] != ' ' && gameBoard[0] == gameBoard[4] && gameBoard[4] == gameBoard[8]) {
+            if (gameBoard[4] == symbol) {
+                System.out.println("\n\ncomputer  WINS THE GAME\n");
+            } else {
+                System.out.println("\n\nplayer  WINS THE GAME\n");
+            }
+            exitCode = '1';
+        } else if (gameBoard[2] != ' ' && gameBoard[2] == gameBoard[4] && gameBoard[4] == gameBoard[6]) {
+            if (gameBoard[2] == symbol) {
+                System.out.println("\n\ncomputer  WINS THE GAME\n");
+            } else {
+                System.out.println("\n\n player  WINS THE GAME\n");
+            }
+            exitCode = '1';
+        }
+    }
+
+    public static void moveLocation() {
+        if (user == '1') {
+            System.out.print("\nSelect the position in board from range [0 - 8] : ");
+            userPosition = scanner.nextInt();
+
+            switch (userPosition) {
+                case 0:
+                    if (gameBoard[0] == ' ') {
+                        gameBoard[0] = userTurn;
+                    }
+                    break;
+
+                case 1:
+                    if (gameBoard[1] == ' ') {
+                        gameBoard[1] = userTurn;
+                    }
+                    break;
+
+                case 2:
+                    if (gameBoard[2] == ' ') {
+                        gameBoard[2] = userTurn;
+                    }
+                    break;
+
+                case 3:
+                    if (gameBoard[3] == ' ') {
+                        gameBoard[3] = userTurn;
+                    }
+                    break;
+
+                case 4:
+                    if (gameBoard[4] == ' ') {
+                        gameBoard[4] = userTurn;
+                    }
+                    break;
+
+                case 5:
+                    if (gameBoard[5] == ' ') {
+                        gameBoard[5] = userTurn;
+                    }
+                    break;
+
+                case 6:
+                    if (gameBoard[6] == ' ') {
+                        gameBoard[6] = userTurn;
+                    }
+                    break;
+
+                case 7:
+                    if (gameBoard[7] == ' ') {
+                        gameBoard[7] = userTurn;
+                    }
+                    break;
+
+                case 8:
+                    if (gameBoard[8] == ' ') {
+                        gameBoard[8] = userTurn;
+                    }
+                    break;
+
+                default:
+                    System.out.println("Invalid Position ! Restart game");
+                    return;
+            }
+            winner(userTurn);
+        } else if (user == '2') {
+            turnCount = turnCount + 1;
+            System.out.println("Computer turn");
+            if (turnCount == 2 || turnCount == 3 || turnCount == 4) blockUser();
+            else computerLocation();
+            winner(computerTurn);
+        }
     }
 
     public static void main(String[] args) {
-        declareArray();
+        ticTacToe();
+        userTurn = user(scanner);
+        computerTurn = (userTurn == 'X') ? 'O' : 'X';
         showBoard();
-        user(scanner);
-        int toss, wonToss;
-        toss = (int) (Math.random() * 2);
-        if (toss == 1) {
-            System.out.println("Player win the toss");
-        } else {
-            System.out.println("Computer win the toss");
-        }
-        computerLocation();
-        blockUser();
-    }
+        int Toss;
+        int wonToss;
+        System.out.println("Choose\n 0. Heads\n 1. Tails\nEnter you choice [0-1] : ");
+        Toss = scanner.nextInt();
+        Random random = new Random();
+        wonToss = random.nextInt(2);
 
+        if (wonToss == Toss) {
+            System.out.println("You won the toss");
+            while (true) {
+                moveLocation();
+                System.out.println("Your board");
+                showBoard();
+                winner(userTurn);
+                if (exitCode == '1') {
+                    break;
+                }
+                computerLocation();
+                System.out.println("Computer Board");
+                showBoard();
+                winner(computerTurn);
+                if (exitCode == '1') {
+                    break;
+                }
+            }
+        } else {
+            System.out.println("Computer won the toss");
+            while (true) {
+                computerLocation();
+                System.out.println("Computer Board");
+                showBoard();
+                winner(computerTurn);
+                if (exitCode == '1') {
+                    break;
+                }
+                System.out.println("Your Turn");
+                moveLocation();
+                System.out.println("Your board");
+                showBoard();
+                winner(userTurn);
+                if (exitCode == '1') {
+                    break;
+                }
+            }
+        }
+
+    }
 }
