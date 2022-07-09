@@ -1,19 +1,20 @@
 package com.bridgelabz;
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
-    // UC1 : Create board of char of size 10
     public static char[] gameBoard = new char[10];
     public static char userTurn;
     public static char computerTurn;
     public static char user = '1';
     public static int userPosition;
     public static int computerPosition;
+    public static char exitCode = '0';
+    public static int turnCount;
     public static Scanner scanner = new Scanner(System.in);
 
     public static void declareArray() {
+        // TODO Auto-generated method stub
         System.out.println("Welcome to Tic-Tac-Toe game");
         for (int i = 0; i < gameBoard.length; i++) {
 
@@ -112,6 +113,46 @@ public class TicTacToe {
         }
     }
 
+    public static void blockUser() {
+        if (gameBoard[0] == userTurn && gameBoard[1] == userTurn) {
+            gameBoard[2] = computerTurn;
+        } else if (gameBoard[3] == userTurn && gameBoard[4] == userTurn) {
+            gameBoard[5] = computerTurn;
+        } else if (gameBoard[6] == userTurn && gameBoard[7] == userTurn) {
+            gameBoard[8] = computerTurn;
+        } else if (gameBoard[0] == userTurn && gameBoard[3] == userTurn) {
+            gameBoard[6] = computerTurn;
+        } else if (gameBoard[1] == userTurn && gameBoard[4] == userTurn) {
+            gameBoard[7] = computerTurn;
+        } else if (gameBoard[2] == userTurn && gameBoard[5] == userTurn) {
+            gameBoard[8] = computerTurn;
+        } else if (gameBoard[0] == userTurn && gameBoard[4] == userTurn) {
+            gameBoard[8] = computerTurn;
+        } else if (gameBoard[2] == userTurn && gameBoard[4] == userTurn) {
+            gameBoard[6] = computerTurn;
+        } else if (gameBoard[0] == userTurn && gameBoard[2] == userTurn) {
+            gameBoard[1] = computerTurn;
+        } else if (gameBoard[3] == userTurn && gameBoard[5] == userTurn) {
+            gameBoard[4] = computerTurn;
+        } else if (gameBoard[6] == userTurn && gameBoard[8] == userTurn) {
+            gameBoard[7] = computerTurn;
+        } else if (gameBoard[0] == userTurn && gameBoard[6] == userTurn) {
+            gameBoard[3] = computerTurn;
+        } else if (gameBoard[1] == userTurn && gameBoard[7] == userTurn) {
+            gameBoard[4] = computerTurn;
+        } else if (gameBoard[2] == userTurn && gameBoard[8] == userTurn) {
+            gameBoard[5] = computerTurn;
+        } else if (gameBoard[0] == userTurn && gameBoard[8] == userTurn) {
+            gameBoard[4] = computerTurn;
+        } else if (gameBoard[2] == userTurn && gameBoard[6] == userTurn) {
+            gameBoard[4] = computerTurn;
+        } else if (gameBoard[8] == userTurn && gameBoard[5] == userTurn) {
+            gameBoard[2] = computerTurn;
+
+        } else
+            computerLocation();
+    }
+
     public static void main(String[] args) {
         declareArray();
         showBoard();
@@ -124,5 +165,7 @@ public class TicTacToe {
             System.out.println("Computer win the toss");
         }
         computerLocation();
+        blockUser();
     }
+
 }
